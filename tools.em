@@ -12,7 +12,7 @@
    :container_name "vaultwarden"
    :environment {:TZ tz
                  :ADMIN_TOKEN "${VAULTWARDEN_ADMIN_TOKEN}"
-                 :SIGNUPS_ALLOWED "true"}
+                 :SIGNUPS_ALLOWED "false"}
    :volumes ["./vaultwarden:/data"]
    :ports ["8081:80"]
    :restart "unless-stopped"}

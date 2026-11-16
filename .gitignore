@@ -1,1 +1,24 @@
 generated/
+
+# Secrets / credentials — never commit (injected at regen or runtime)
+.secrets
+.secrets.*
+.env
+.env.*
+*.env
+*.env.*
+secrets/
+*secrets*
+credentials*
+*credentials*
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+.htpasswd
+htpasswd
+# Files that hold extracted API keys / tokens in this setup
+config.xml
+*.db
