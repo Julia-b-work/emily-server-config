@@ -1,11 +1,10 @@
 # emily-server-config
 
-The complete configuration of my home server, written in [Emily](https://github.com/Julia-b-work/emily-language)
-— a statically-typed Lisp I'm building. One registry drives everything.
+The complete configuration of my home server, written in [Emily](https://github.com/Julia-b-work/emily-language), a statically-typed Lisp I'm building. One registry drives everything.
 
 ## The idea
 
-All of these are generated from a single source of truth — [`services.em`](services.em),
+All of these are generated from a single source of truth: [`services.em`](services.em),
 a list of 16 service records:
 
 ```
@@ -47,8 +46,8 @@ and the monitor pipeline that folds the registry into Uptime Kuma:
   (if s.monitor (append acc (to-monitor s)) acc)))
 ```
 
-Since Emily 0.2.0 the registry is type-annotated (`: Service`, `: (List Service)`) —
-annotations parse today; the type checker arrives next.
+Since Emily 0.2.0 the registry is type-annotated (`: Service`, `: (List Service)`);
+annotations parse today, the type checker arrives next.
 
 ## Regenerating
 
@@ -63,10 +62,19 @@ Output formats: `json` (default), `yaml`, `toml` (`--format`).
 
 ## Secrets policy
 
-No passwords live in the `.em` sources. Secrets are injected at runtime from each
-stack's git-ignored `.env` (e.g. `WEBPASSWORD "${PIHOLE_WEBPASSWORD}"`) or injected at
-regen time (the Jellyfin API key in `widgets.em` is a placeholder filled from the
-Jellyfin DB). The Kuma helper scripts expect `KUMA_PASSWORD` in the environment.
+No passwords live in the `.em` sources. Everything sensitive is injected at regen
+time or runtime, never committed:
+
+- **Regen time:** `regenerate.sh` fills six placeholders from live, git-ignored
+  sources: the Jellyfin API key (`jellyfin.db`), the Sonarr and Radarr keys
+  (`config.xml`), the Pi-hole web password (`.env`), and the qBittorrent and Kuma
+  passwords (`/data/emily-config/.secrets`).
+- **Runtime:** compose interpolation supplies `${VAULTWARDEN_ADMIN_TOKEN}` and
+  `${PIHOLE_WEBPASSWORD}` from each stack's git-ignored `.env`, and the Kuma
+  scripts expect `KUMA_PASSWORD` in the environment.
+
+`.gitignore` covers `.secrets`, `.env` files, keys, certificates, and credential
+dumps (`config.xml`, `*.db`).
 
 ## Layout
 
@@ -84,4 +92,3 @@ Jellyfin DB). The Kuma helper scripts expect `KUMA_PASSWORD` in the environment.
 ## More
 
 - The language: https://github.com/Julia-b-work/emily-language
-- The blog post about this setup: <link>
