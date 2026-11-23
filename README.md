@@ -22,6 +22,22 @@ Adding a service to the server is a **one-line change**: a new record in `servic
 then `./regenerate.sh --apply`. The proxy route, the dashboard tile, the monitor, and
 (where applicable) the compose file all regenerate from that one line.
 
+## Who actually runs this
+
+An AI agent. Since October 2026 I've kept a persistent AI admin on the server, and it
+operates this entire config through Emily: it writes the `.em` sources, runs
+`./regenerate.sh --apply`, debugs the pipeline when something breaks (several of the
+crashes it caused and fixed are in [`EMILY-LOG.md`](EMILY-LOG.md)), and keeps that log
+as its own running diary — the log is the agent's words, not mine.
+
+This is deliberate. The point of Emily is config that's *generated and checked*, and
+an agent is the most demanding consumer of that: its production use is where the
+language's feedback came from — string record keys, list indexing, deep merge, env
+access — all filed as issues on the
+[language repo](https://github.com/Julia-b-work/emily-language/issues). I own the
+server, the language, and the secrets policy; the agent owns the day-to-day config
+work, under the rule that nothing secret ever enters the sources (see below).
+
 ## Example
 
 ```clojure
