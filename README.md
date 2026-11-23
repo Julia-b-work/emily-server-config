@@ -32,7 +32,7 @@ as its own running diary (the log is the agent's words, not mine).
 
 This is deliberate. The point of Emily is config that's *generated and checked*, and
 an agent is the most demanding consumer of that: its production use is where the
-language's feedback came from — string record keys, list indexing, deep merge, env
+language's feedback came from, string record keys, list indexing, deep merge, env
 access, all filed as issues on the
 [language repo](https://github.com/Julia-b-work/emily-language/issues). I own the
 server, the language, and the secrets policy; the agent owns the day-to-day config
