@@ -8,7 +8,7 @@
    :container_name "homepage"
    :environment (merge puid-pgid
       {:TZ tz
-       :HOMEPAGE_ALLOWED_HOSTS "home.home,home,julia-server.local,192.168.15.90"})
+       :HOMEPAGE_ALLOWED_HOSTS "server.home,home,server.local,192.168.1.10"})
    :volumes ["./config:/app/config"]
    :ports ["3000:3000"]
    :networks ["default" "arr_default" "jellyfin_default" "immich_default" "pihole_default"]

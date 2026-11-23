@@ -92,6 +92,10 @@ time or runtime, never committed:
 `.gitignore` covers `.secrets`, `.env` files, keys, certificates, and credential
 dumps (`config.xml`, `*.db`).
 
+**Addresses:** LAN IPs and internal domains shown in these files are placeholders
+(`192.168.1.x`, `server.home`, `server.local`) — the real values live only on the
+server.
+
 ## Layout
 
 | File | Generates |

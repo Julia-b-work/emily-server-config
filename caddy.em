@@ -35,7 +35,7 @@
 (def catch-all
   {:handle [{:handler "static_response"
              :status_code 302
-             :headers {:Location ["http://192.168.15.90:3000"]}}]})
+             :headers {:Location ["http://192.168.1.10:3000"]}}]})
 
 (def routes (append (fold services [] (fn (acc s) (append acc (make-route s))))
                     catch-all))

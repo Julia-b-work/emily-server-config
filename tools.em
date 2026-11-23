@@ -2,7 +2,7 @@
 ;; Vaultwarden (passwords) + Uptime Kuma (monitoring) + Dozzle (log viewer).
 ;; Secret ADMIN_TOKEN lives in the stack .env (never in Emily sources).
 ;; Host ports published so the tools are reachable away from home via Tailscale
-;; (julia-server:<port> / tailscale:<port>). All three require login.
+;; (server:<port> / tailscale:<port>). All three require login.
 (import "lib.em")
 
 {:name "tools"
@@ -19,7 +19,7 @@
   :uptime-kuma
   {:image "louislam/uptime-kuma:1"
    :container_name "uptime-kuma"
-   :dns ["192.168.15.90"]
+   :dns ["192.168.1.10"]
    :volumes ["./uptime-kuma:/app/data"]
    :ports ["3001:3001"]
    :restart "unless-stopped"}

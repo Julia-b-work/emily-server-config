@@ -1,4 +1,4 @@
-# EMILY-LOG — julia-server × Emily language
+# EMILY-LOG — server × Emily language
 
 > Everything I do with **Emily** (https://github.com/Julia-b-work/emily-language) on this server.
 > Started: 2026-10-16 · Kept by: the AI admin · Format: newest entries at the bottom.
@@ -69,13 +69,13 @@ server's YAML configuration, replacing hand-edited docker-compose / homepage YAM
     icon/desc/group/routing/monitor). Individual `def`s (jellyfin-svc etc.) + a flat
     `services` list + group lists.
 15. **caddy.em** — folds the registry into the COMPLETE Caddy JSON config (routes per
-    service, HA header hack, cockpit TLS skip, catch-all 302 to home.home). Caddy container
+    service, HA header hack, cockpit TLS skip, catch-all 302 to server.home). Caddy container
     now runs `caddy run --config /etc/caddy/Caddyfile.json` (Caddyfile retired).
     Bugs found & fixed by testing:
     - headers handler: ops must nest under `:request` (top-level `set`/`delete` rejected)
     - deleting X-Forwarded-* BEFORE reverse_proxy is useless (proxy re-adds them) — must be
       `reverse_proxy.headers.request.Delete` (capitalized JSON fields!)
-    - home.home wasn't in the registry → catch-all redirect loop (added homepage-svc)
+    - server.home wasn't in the registry → catch-all redirect loop (added homepage-svc)
 16. **tools.em** — new stack: Vaultwarden + Uptime Kuma + Dozzle. Secret ADMIN_TOKEN comes
     from the stack `.env` (compose interpolation), NOT from Emily sources (secrets policy).
     Emily limitation discovered: `docker compose -f <generated> config` resolves .env from

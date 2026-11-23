@@ -7,9 +7,9 @@
   :image "pihole/pihole:latest"
   :restart "unless-stopped"
   ;; DNS bound to the LAN IP so it doesn't clash with libvirt's internal
-  ;; DNS on 192.168.122.1; web UI published on 8088.
-  :ports ["192.168.15.90:53:53/tcp"
-          "192.168.15.90:53:53/udp"
+  ;; DNS on 192.168.1.1; web UI published on 8088.
+  :ports ["192.168.1.10:53:53/tcp"
+          "192.168.1.10:53:53/udp"
           "8088:80/tcp"]
   :environment {:TZ tz
                 :WEBPASSWORD "${PIHOLE_WEBPASSWORD}"

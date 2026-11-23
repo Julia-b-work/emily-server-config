@@ -1,4 +1,4 @@
-;; services.em — THE canonical registry of julia-server services.
+;; services.em — THE canonical registry of server services.
 ;; One list drives: Caddy routes (caddy.em), homepage tiles (homepage-services.em),
 ;; and Uptime Kuma monitors (monitors.em).
 ;;
@@ -23,7 +23,7 @@
   :url "http://immich.home" :icon "immich.png" :desc "Photos"
   :group "Media" :routing "proxy" :monitor true})
 
-(def ha-svc : Service {:key "ha" :name "Home-Assistant" :host "192.168.15.119" :port 80
+(def ha-svc : Service {:key "ha" :name "Home-Assistant" :host "192.168.1.11" :port 80
   :url "http://ha.home" :icon "home-assistant.png" :desc "Smart home"
   :group "Media" :routing "ha" :monitor true})
 
@@ -55,16 +55,16 @@
   :url "http://prowlarr.home" :icon "prowlarr.png" :desc "Indexers"
   :group "Requests" :routing "proxy" :monitor true})
 
-(def pihole-svc : Service {:key "pihole" :name "Pi-hole" :host "192.168.15.90" :port 8088
+(def pihole-svc : Service {:key "pihole" :name "Pi-hole" :host "192.168.1.10" :port 8088
   :url "http://pihole.home/admin" :icon "pi-hole.png" :desc "Ad blocking"
   :group "System" :routing "pihole" :monitor true})
 
-(def cockpit-svc : Service {:key "cockpit" :name "Cockpit" :host "192.168.15.90" :port 9090
+(def cockpit-svc : Service {:key "cockpit" :name "Cockpit" :host "192.168.1.10" :port 9090
   :url "https://cockpit.home" :icon "cockpit.png" :desc "Server admin"
   :group "System" :routing "cockpit" :monitor false})
 
 (def homepage-svc : Service {:key "home" :name "Homepage" :host "homepage" :port 3000
-  :url "http://home.home" :icon "homepage.png" :desc "Dashboard"
+  :url "http://server.home" :icon "homepage.png" :desc "Dashboard"
   :group "none" :routing "proxy" :monitor true})
 
 (def vaultwarden-svc : Service {:key "vault" :name "Vaultwarden" :host "vaultwarden" :port 80
